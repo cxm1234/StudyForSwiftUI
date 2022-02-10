@@ -15,35 +15,44 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            LazyVGrid(columns: [GridItem(), GridItem()]) {
                 ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
                     CardView(content: emoji)
                 }
             }
+            .foregroundColor(.red)
+            Spacer()
             HStack {
-                Button(action: {
-                    emojiCount -= 1
-                }, label: {
-                    VStack {
-                        Text("Remove")
-                        Text("Card")
-                    }
-                })
+                remove
                 Spacer()
-                Button(action: {
-                    emojiCount += 1
-                }, label: {
-                    VStack {
-                        Text("Add")
-                        Text("Card")
-                    }
-                })
+                add
             }
+            .font(.largeTitle)
             .padding(.horizontal)
         }
         .padding(.horizontal)
-        .foregroundColor(.red)
+        
 
+    }
+    
+    var remove: some View {
+        Button {
+            if emojiCount > 1{
+                emojiCount -= 1
+            }
+        } label: {
+            Image(systemName: "minus.circle")
+        }
+    }
+    
+    var add: some View {
+        Button {
+            if emojiCount < emojis.count {
+                emojiCount += 1
+            }
+        } label: {
+            Image(systemName: "plus.circle")
+        }
     }
     
 }
