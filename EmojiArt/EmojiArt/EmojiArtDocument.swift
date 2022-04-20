@@ -11,7 +11,9 @@ class EmojiArtDocument: ObservableObject {
     
     @Published private(set) var emojiArt: EmojiArtModel {
         didSet {
-            
+            if emojiArt.background != oldValue.background {
+                fetchBackgroundImageDataIfNecessary()
+            }
         }
     }
     
@@ -25,7 +27,38 @@ class EmojiArtDocument: ObservableObject {
     
     var background: EmojiArtModel.Background { emojiArt.background }
     
+    
+    
     @Published var backgroundImage: UIImage?
+    @Published var backgroundImageFetchStatus = BackgroundImageFetchStatus.idle
+    
+    enum BackgroundImageFetchStatus {
+        case idle
+        case fetching
+    }
+    
+    private func fetchBackgroundImageDataIfNecessary() {
+        backgroundImage = nil
+        switch emojiArt.background {
+        case .url(let url):
+            // fetch the url
+            backgroundImageFetchStatus = .fetching
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let imageData = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async { [weak self] in
+                        if self?.background == EmojiArtModel.Background.url(url) {
+                            self?.backgroundImageFetchStatus = .idle
+                            self?.backgroundImage = UIImage(data: imageData)
+                        }
+                    }
+                }
+            }
+        case .blank:
+            break
+        case .imageData(let data):
+            backgroundImage = UIImage(data: data)
+        }
+    }
     
     //MARK: - Intent(s)
     
