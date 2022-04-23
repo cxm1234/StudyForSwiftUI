@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		319365E2281451F700CE84E8 /* PaletteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319365E1281451F700CE84E8 /* PaletteStore.swift */; };
 		D0B09FAE2809C7E500E45F94 /* EmojiArtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B09FAD2809C7E500E45F94 /* EmojiArtApp.swift */; };
 		D0B09FB02809C7E500E45F94 /* EmojiArtDocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B09FAF2809C7E500E45F94 /* EmojiArtDocumentView.swift */; };
 		D0B09FB22809C7E700E45F94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0B09FB12809C7E700E45F94 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		319365E1281451F700CE84E8 /* PaletteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteStore.swift; sourceTree = "<group>"; };
 		D0B09FAA2809C7E500E45F94 /* EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B09FAD2809C7E500E45F94 /* EmojiArtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtApp.swift; sourceTree = "<group>"; };
 		D0B09FAF2809C7E500E45F94 /* EmojiArtDocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiArtDocumentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				D0B09FAF2809C7E500E45F94 /* EmojiArtDocumentView.swift */,
 				D0B09FBB2809C87D00E45F94 /* EmojiArtModel.swift */,
 				D0B09FBF2809CC4A00E45F94 /* EmojiArtDocument.swift */,
+				319365E1281451F700CE84E8 /* PaletteStore.swift */,
 				D0B09FBD2809CAE400E45F94 /* EmoArtModel.Background.swift */,
 				D0B09FC42809D15400E45F94 /* UtilityExtensions.swift */,
 				D0B09FC32809D15400E45F94 /* UtilityViews.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0B09FB02809C7E500E45F94 /* EmojiArtDocumentView.swift in Sources */,
+				319365E2281451F700CE84E8 /* PaletteStore.swift in Sources */,
 				D0B09FAE2809C7E500E45F94 /* EmojiArtApp.swift in Sources */,
 				D0B09FC02809CC4A00E45F94 /* EmojiArtDocument.swift in Sources */,
 				D0B09FC62809D15400E45F94 /* UtilityExtensions.swift in Sources */,
