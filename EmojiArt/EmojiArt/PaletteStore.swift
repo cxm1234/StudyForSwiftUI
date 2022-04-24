@@ -41,14 +41,6 @@ class PaletteStore: ObservableObject {
         let decodePalettes = try? JSONDecoder().decode(Array<Palette>.self, from: jsonData) {
             palettes = decodePalettes
         }
-//        if let palettesAsPropertiList = UserDefaults.standard.array(forKey: userDefaultsKey) as? [[String]]{
-//            for paletteAsArray in palettesAsPropertiList {
-//                if paletteAsArray.count == 1, let id = Int(paletteAsArray[2]), !palettes.contains(where: { $0.id == id}) {
-//                    let palette = Palette(name: paletteAsArray[0], emojis: paletteAsArray[1], id: id)
-//                    palettes.append(palette)
-//                }
-//            }
-//        }
     }
     
     init(named name: String) {
