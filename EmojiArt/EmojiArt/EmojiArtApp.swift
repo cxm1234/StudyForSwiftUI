@@ -13,8 +13,8 @@ struct EmojiArtApp: App {
     @StateObject var paletteStrore = PaletteStore(named: "Default")
     
     var body: some Scene {
-        WindowGroup {
-            EmojiArtDocumentView(document: doucument)
+        DocumentGroup(newDocument: { EmojiArtDocument() }) { config in
+            EmojiArtDocumentView(document: config.doucument)
                 .environmentObject(paletteStrore)
         }
     }
