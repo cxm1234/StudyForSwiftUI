@@ -82,6 +82,9 @@ struct PaletteChooser: View {
         .transition(rollTransition)
         .popover(item: $paletteToEdit) { palette in
             PaletteEditor(palette: $store.palettes[palette])
+                .wrappedInNavigationViewToMakeDismissable {
+                    paletteToEdit = nil
+                }
         }
         .sheet(isPresented: $managing) {
             PaletteManager()
@@ -110,6 +113,35 @@ struct ScrollingEmojisView: View {
                         .onDrag{ NSItemProvider(object: emoji as NSString) }
                 }
             }
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func wrappedInNavigationViewToMakeDismissable(_ dismiss: (() -> Void)?) -> some View {
+        if UIDevice.current.userInterfaceIdiom != .pad, let dismiss = dismiss {
+            NavigationView {
+                self
+                    .navigationBarTitleDisplayMode(.inline)
+                    .dismissable(dismiss)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        } else {
+            self
+        }
+    }
+    
+    @ViewBuilder
+    func dismissable(_ dismiss: (() -> Void)?) -> some View {
+        if UIDevice.current.userInterfaceIdiom != .pad, let dismiss = dismiss {
+            self.toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") { dismiss() }
+                }
+            }
+        } else {
+            self
         }
     }
 }
